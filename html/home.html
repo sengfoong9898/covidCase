@@ -5,14 +5,289 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid 19 Tracker</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/Bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/Bootstrap/bootstrap.min.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/script.js"></script>
   </head>
   <body>
-    
+    <div id="ct-main" class="d-flex flex-column">
+      <!-- Section 1 - display total cases -->
+      <div class="ct-totalcases">
+        
+        <div class="ct-totalcases-title">
+          <p>Active COVID-19 Cases in Malaysia</p>
+        </div>
+        <div class="ct-totalcases-value">
+          <h1>10000</h1>
+        </div>
+      </div>
 
+      <!-- Section 2 - break down by states -->
+      <div class="ct-states d-flex justify-content-center">
+        <div class="ct-states-gridlist">
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-johor col-4">
+              <img src="../images/flags/Johor.png" alt="" />
+              <span class="ct-state-name">Johor</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">New cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-kedah col-4">
+              <img src="../images/flags/Kedah.png" alt="" />
+              <span class="ct-state-name">Kedah</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">New cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-kelantan col-4">
+              <img src="../images/flags/Kelantan.png" alt="" />
+              <span class="ct-state-name">Kelantan</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">New cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-johor col-4">
+              <img src="../images/flags/Melaka.png" alt="" />
+              <span class="ct-state-name">Melaka</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">New cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-w-p-kuala-lumpur col-4">
+              <img src="../images/flags/W.P. Kuala Lumpur.png" alt="" />
+              <span class="ct-state-name">W.P Kuala Lumpur</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">New cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-selangor col-4">
+              <img src="../images/flags/Selangor.png" alt="" />
+              <span class="ct-state-name">Selangor</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">New cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-negeri-sembilan col-4">
+              <img src="../images/flags/Negeri Sembilan.png" alt="" />
+              <span class="ct-state-name">Negeri Sembilan</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-pahang col-4">
+              <img src="../images/flags/Pahang.png" alt="" />
+              <span class="ct-state-name">Pahang</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-perak col-4">
+              <img src="../images/flags/Perak.png" alt="" />
+              <span class="ct-state-name">Perak</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-pulau-penang col-4">
+              <img src="../images/flags/Pulau Penang.png" alt="" />
+              <span class="ct-state-name">Pulau Penang</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-perlis col-4">
+              <img src="../images/flags/Perlis.png" alt="" />
+              <span class="ct-state-name">Perlis</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-terengganu col-4">
+              <img src="../images/flags/Terengganu.png" alt="" />
+              <span class="ct-state-name">Terengganu</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-w-p-putrajaya col-4">
+              <img src="../images/flags/W.P. Putrajaya.png" alt="" />
+              <span class="ct-state-name">W.P Putrajaya</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-sarawak col-4">
+              <img src="../images/flags/Sarawak.png" alt="" />
+              <span class="ct-state-name">Sarawak</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-sabah col-4">
+              <img src="../images/flags/Sabah.png" alt="" />
+              <span class="ct-state-name">Sabah</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-state-item d-flex col-12">
+            <div class="ct-state-flag-name ct-w-p-labuan col-4">
+              <img src="../images/flags/W.P. Labuan.png" alt="" />
+              <span class="ct-state-name">W.P Labuan</span>
+            </div>
+            <div class="ct-state-info col-8">
+              <div class="new-cases">
+                <p class="title">Active cases:</p>
+                <p class="value">0</p>
+              </div>
+              <div class="recovered-cases">
+                <p class="title">Recovered cases:</p>
+                <p class="value">0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section 3 - display chart (pie chart) -->
+      <!-- Section 4 - display graph (hologram) -->
+    </div>
+    <div id="ct-footer"></div>
   </body>
 </html>
