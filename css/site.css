@@ -18,18 +18,28 @@ body {
   position: absolute;
 }
 
-.ct-totalcases {
+.ct-overall {
   width: 75%;
   height: 20em;
   color: black;
-  text-transform: capitalize;
   padding: 1em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
   box-shadow: 0 0.01em 1em 0 rgba(0, 0, 0, 0.4);
+}
+
+.ct-overall-body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.ct-overall-info {
+  padding: 0.5em;
+}
+
+.ct-overall-visualization {
 }
 
 .ct-states {

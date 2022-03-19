@@ -5,21 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid 19 Tracker</title>
-    <link rel="stylesheet" href="../css/Bootstrap/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="../css/site.css" />
-    <script src="../js/Bootstrap/bootstrap.min.js"></script>
-    <script src="../js/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/chart.js/dist/chart.min.js"></script>
     <script src="../js/script.js"></script>
   </head>
   <body>
     <div id="ct-main" class="d-flex flex-column">
       <!-- Section 1 - display total cases -->
-      <div class="ct-totalcases">
-        <div class="ct-totalcases-title">
-          <p>Active COVID-19 Cases in Malaysia</p>
+      <div class="ct-overall">
+        <div class="ct-overall-header">
+          <h3>Overall Statistic of COVID-19 Cases in Malaysia Today</h3>
+          <div class="ct-today d-flex flex-row">
+            As of&nbsp;
+            <div class="ct-today-date">dd-mm-yyyy</div>
+          </div>
         </div>
-        <div class="ct-totalcases-value">
-          <h1>10000</h1>
+        <div class="ct-overall-body">
+          <div class="ct-overall-info col-4">
+            <div class="ct-new-cases">
+              <div class="title">
+                <p>Total new cases</p>
+              </div>
+              <div class="value">
+                <h1>10000</h1>
+              </div>
+            </div>
+            <div class="ct-recovered-cases">
+              <div class="title">
+                <p>Total recovered cases</p>
+              </div>
+              <div class="value">
+                <h1>10000</h1>
+              </div>
+            </div>
+          </div>
+          <div class="ct-overall-visualization col-8">
+            <img
+              src="https://www.howtogeek.com/wp-content/uploads/2021/10/GoogleSheetsPieChart.png?width=1198&trim=1,1&bg-color=000&pad=1,1"
+              alt=""
+              height="200px"
+              width="400px"
+            />
+          </div>
         </div>
       </div>
 
