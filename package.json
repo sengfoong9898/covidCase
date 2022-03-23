@@ -2,6 +2,8 @@
   "dependencies": {
     "bootstrap": "^5.1.3",
     "chart.js": "^3.7.1",
-    "jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "jquery-csv": "^1.0.21",
+    "sweetalert2": "^11.4.6"
   }
 }

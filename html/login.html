@@ -1,33 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login-page.css" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/chart.js/dist/chart.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/login.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="../css/login-page.css">
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/chart.js/dist/chart.min.js"></script>
-  <script defer src="../js/script.js"></script>
-</head>
+  <body>
+    <div id="login">
+      <div class="login-window">
+        <div class="login-header">
+          <p class="login-header-text">Login</p>
+        </div>
 
-<body>
-  <main id="main-holder">
-    <h1 id="login-header">Login</h1>
-    
-    <div id="login-error-msg-holder">
-      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+        <div class="login-fields">
+          <input
+            type="text"
+            name="username"
+            id="username-field"
+            class="login-form-field"
+            placeholder="Username"
+          />
+          <p class="invalid-field invalid-username hidden">
+            User doesn't exist
+          </p>
+          <input
+            type="password"
+            name="password"
+            id="password-field"
+            class="login-form-field"
+            placeholder="Password"
+          />
+          <p class="invalid-field invalid-password hidden">
+            Incorrect password
+          </p>
+          <button class="btn btn-info login-button">Login</button>
+        </div>
+      </div>
     </div>
-    
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-      <input type="submit" value="Login" id="login-form-submit">
-    </form>
-  
-  </main>
-</body>
-
+  </body>
 </html>

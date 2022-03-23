@@ -1,141 +1,214 @@
-$(document).ready(function () {
+var statesNameList = [],
+  statesNewCasesList = [],
+  filteredLatestData = [];
 
-    readCsv();
-});
-
-
-function readCsv(){
-    jQuery.ajax({
-        url: "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv",
-        type: 'get',
-        dataType: 'text',
-        success: function(data) {
-            let lines = data.split('\n');
-            let fields = lines[0].split(',');
-            
-            let output = [];
-            
-            for(let i = 1; i < lines.length; i++){
-               let current = lines[i].split(',');
-               let doc = {};
-               for(let j = 0; j < fields.length; j++){
-                   doc[fields[j]] = current[j];
-               }
-               output.push(doc);
-            }       
-            console.log(output);
-            let filteredData = [];
-            output.filter((item)=>{
-               if(item.date ===getYesterdayDate().toString()){
-                    return filteredData.push(item);
-                }
-            });
-            filteredData.map((item)=>{
-                let b;
-                if(item.state.includes('W.P.')){
-                   b= item.state.replace(/\.\s|\.|\s+/g, "-").toLowerCase();
-                    item.state =b
-            } else{
-                 b= item.state.replace(' ','-').toLowerCase();  
-                 item.state =b
-            }
-               return filteredData;
-            })
-            // console.log('mapped',a);
-            // return data
-            populate(filteredData)
-        },
-        error: function(jqXHR, textStatus, errorThrow){
-            console.log(textStatus);
-        }
-    });
-}
-
-function populate(data){
-    let totalCases = 0;
-    let totalRecoveredCases =0;
-    $.each(data, function(index, item){
-        totalCases = Number(totalCases) + Number(item.cases_new);
-        totalRecoveredCases= Number(totalRecoveredCases)+Number(item.cases_recovered);
-        let name = item.state, 
-        container = `.ct-${name}`;
-        $(`${container} .new-cases .value`).html(item.cases_new);
-        $(`${container} .recovered-cases .value`).html(item.cases_recovered);
+$(function () {
+  $(".exit-button").on("click", function () {
+    Swal.fire({
+      title: "Are you sure  to log out?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!",
     })
-    let headerNewCases =`.ct-new-cases`;
-    let headerRecoveredCases = '.ct-recovered-cases'
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            "You have logged out successfully",
+            "Always wear mask and sanitize your hand, take care!",
+            "success"
+          );
+        }
+      })
+      .then(function () {
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 1500);
+      });
+  });
+
+  populateCovidData = (data) => {
+    let totalCases = 0,
+      totalRecoveredCases = 0;
+
+    $.each(data, function (_index, item) {
+      totalCases = Number(totalCases) + Number(item.cases_new);
+      totalRecoveredCases =
+        Number(totalRecoveredCases) + Number(item.cases_recovered);
+
+      let name = item.state.replace(/\.\s|\.|\s+/g, "-").toLowerCase(),
+        container = `.ct-${name}`;
+      $(`${container} .new-cases .value`).html(item.cases_new);
+      $(`${container} .recovered-cases .value`).html(item.cases_recovered);
+    });
+
+    let headerNewCases = `.ct-new-cases`,
+      headerRecoveredCases = ".ct-recovered-cases";
+
     $(`${headerNewCases} .value h1`).html(totalCases);
     $(`${headerRecoveredCases} .value h1`).html(totalRecoveredCases);
-    let date =getYesterdayDate();
+    let date = getYesterdayDate();
     $(`.ct-today-date`).html(date);
-}
+  };
 
+  populateChart = () => {
+    var backgroundColor = [
+        "#F40000",
+        "#D12181",
+        "#BF55C8",
+        "#9C3ECC",
+        "#B768E6",
+        "#7E93E3",
+        "#0079CD",
+        "#92D1F5",
+        "#76D4D3",
+        "#25CFA6",
+        "#1AA22D",
+        "#4FCF25",
+        "#CEEA0B",
+        "#F5E301",
+        "#F5A800",
+        "#F56F00",
+      ],
+      dataConfig = {
+        labels: statesNameList,
+        datasets: [
+          {
+            label: "New Daily Covid Cases by States",
+            data: statesNewCasesList,
+            backgroundColor: backgroundColor,
+            hoverBorderWidth: 2,
+          },
+        ],
+      };
 
+    const myBarChart = $("#ct-chart");
+    const myPieChart = $("#ct-chart2");
 
-// https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv
+    const ctChart = new Chart(myBarChart, {
+      type: "bar",
+      data: dataConfig,
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+            position: "right",
+          },
+        },
+      },
+    });
+    const ctChart2 = new Chart(myPieChart, {
+      type: "pie",
+      data: dataConfig,
+      options: {
+        plugins: {
+          legend: {
+            display: true,
+            position: "right",
+          },
+        },
+      },
+    });
+  };
 
-// function readDeath(){
-//     jQuery.ajax({
-//         url: "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv",
-//         type: 'get',
-//         dataType: 'text',
-//         success: function(data) {
-//             let lines = data.split('\n');
-//             let fields = lines[0].split(',');
-            
-//             let output = [];
-            
-//             for(let i = 1; i < lines.length; i++){
-//                let current = lines[i].split(',');
-//                let doc = {};
-//                for(let j = 0; j < fields.length; j++){
-//                    doc[fields[j]] = current[j];
-//                }
-//                output.push(doc);
-//             }       
-//             console.log(output);
-//             let a = [];
-//             output.filter((item)=>{
-//                 if(item.date ===getTodayDate().toString() ){
-//                    return a.push(item);
-//                 }
-//                 else if(item.date ===getYesterdayDate().toString()){
-//                     return a.push(item);
-//                 }
-//                 else{
-//                     return a;
-//                 }
-//             });
-//             console.log(a)
-//             // return a
-//         },
-//         error: function(jqXHR, textStatus, errorThrow){
-//             console.log(textStatus);
-//         }
-//     });
-// }
+  $(".ct-slider-button input").on("change", function () {
+    $(".chart").toggleClass("hidden");
+  });
 
-function getYesterdayDate() {
-    return new Date(new Date().getTime() - 24*60*60*1000).toISOString().slice(0,10);
-  }
+  getCSV = () => {
+    $.ajax({
+      url: "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv",
+      type: "get",
+      dataType: "text",
+      success: function (data) {
+        filteredLatestData = getLatestData(data);
 
-  function getTodayDate() {
-    return new Date().toISOString().slice(0, 10);
-  }
+        $.each(filteredLatestData, function (_index, value) {
+          statesNameList.push(value.state);
+          statesNewCasesList.push(value.cases_new);
+        });
+      },
+      error: function (_jqXHR, textStatus, _errorThrow) {
+        console.log(textStatus);
+      },
+    });
+  };
 
-const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-form-submit");
-const loginErrorMsg = document.getElementById("login-error-msg");
+  getLatestData = (data) => {
+    let lines = data.split("\n"),
+      fields = lines[0].split(","),
+      yesterday = getYesterdayDate(),
+      latestData = [];
 
-loginButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
-
-    if (username === "user" && password === "web_dev") {       
-        console.log('hello');
-window.location.href="home.html";
-    } else {
-        loginErrorMsg.style.opacity = 1;
+    for (let i = 1; i < lines.length; i++) {
+      let current = lines[i].split(",");
+      let doc = {};
+      if (current[0] == yesterday) {
+        for (let j = 0; j < fields.length; j++) {
+          doc[fields[j]] = current[j];
+        }
+        latestData.push(doc);
+      }
     }
-})
+
+    return latestData;
+  };
+
+  getYesterdayDate = () => {
+    return new Date(new Date().getTime() - 24 * 60 * 60 * 1000)
+      .toISOString()
+      .slice(0, 10);
+  };
+
+  getCSV();
+  populateCovidData(filteredLatestData);
+  populateChart();
+});
+
+getCSV = () => {
+  $.ajax({
+    url: "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv",
+    type: "get",
+    dataType: "text",
+    success: function (data) {
+      filteredLatestData = getLatestData(data);
+
+      $.each(filteredLatestData, function (_index, value) {
+        statesNameList.push(value.state);
+        statesNewCasesList.push(value.cases_new);
+      });
+    },
+    error: function (_jqXHR, textStatus, _errorThrow) {
+      console.log(textStatus);
+    },
+  });
+};
+
+getLatestData = (data) => {
+  let lines = data.split("\n"),
+    fields = lines[0].split(","),
+    yesterday = getYesterdayDate(),
+    latestData = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    let current = lines[i].split(",");
+    let doc = {};
+    if (current[0] == yesterday) {
+      for (let j = 0; j < fields.length; j++) {
+        doc[fields[j]] = current[j];
+      }
+      latestData.push(doc);
+    }
+  }
+
+  return latestData;
+};
+
+getYesterdayDate = () => {
+  return new Date(new Date().getTime() - 24 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+};
+
+getCSV();
