@@ -121,6 +121,9 @@ $(function () {
       url: "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv",
       type: "get",
       dataType: "text",
+      beforeSend: function(){
+        $('.ajax-loader').css("visibility", "visible");
+      },
       success: function (data) {
         filteredLatestData = getLatestData(data);
 
@@ -128,6 +131,9 @@ $(function () {
           statesNameList.push(value.state);
           statesNewCasesList.push(value.cases_new);
         });
+      },
+      complete: function(){
+        $('.ajax-loader').css("visibility", "hidden");
       },
       error: function (_jqXHR, textStatus, _errorThrow) {
         console.log(textStatus);
